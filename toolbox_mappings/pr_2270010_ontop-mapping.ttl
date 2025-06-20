@@ -1,0 +1,68 @@
+@prefix : <http://geovistory.org/resource/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ontome: <https://ontome.net/ontology/> .
+
+<urn:MAPID-2270020-entities> a rr:TriplesMap;
+  rr:logicalTable [rr:tableName "rdf.v_ontop_2270010_entity_preview"
+    ];
+  rr:subjectMap [
+      rr:template "http://geovistory.org/resource/i{pk_entity}";
+      rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ 
+          rr:column "cl_uri";
+          rr:termType rr:IRI
+        ];
+      rr:predicate rdf:type
+    ], 
+    [ a rr:PredicateObjectMap;
+      rr:objectMap [
+          rr:column "entity_label";
+          rr:termType rr:Literal
+        ];
+      rr:predicate rdfs:label
+    ];
+   .
+
+
+
+<urn:MAPID-2270020-statements> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "rdf.v_ontop_2270010_statement_preview" ];
+    rr:subjectMap [
+        rr:template "http://geovistory.org/resource/i{fk_subject_info}";
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+       rr:predicateMap [
+        rr:column "p_uri";
+        rr:termType rr:IRI
+      ];
+      rr:objectMap [ 
+      # rr:column "fk_object_info";
+      rr:template "http://geovistory.org/resource/i{fk_object_info}" ;
+          rr:termType rr:IRI
+      ];
+    ].
+
+
+
+<urn:MAPID-2270020-statements_values> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "rdf.v_ontop_2270010_statement_value_preview" ];
+    rr:subjectMap [
+        rr:template "http://geovistory.org/resource/i{fk_subject_info}";
+        rr:termType rr:IRI
+    ];
+    rr:predicateObjectMap [
+       rr:predicateMap [
+        rr:column "p_uri";
+        rr:termType rr:IRI
+      ];
+       rr:objectMap [
+          rr:column "object_label";
+          rr:termType rr:Literal
+        ];
+    ].
