@@ -114,7 +114,9 @@ limit 10;
 --
 drop view rdf.v_ontop_project_statements_places;
 create or replace view rdf.v_ontop_project_statements_places as
-select ps.fk_project, ps.fk_subject_info, ps.fk_property, prop.property_standard_label, ps.fk_object_info, p.geo_point 
+select ps.fk_project, ps.fk_subject_info, ps.fk_property, 
+prop.top_level_namespace_uri || prop.identifier_in_namespace AS property_uri,
+prop.property_standard_label, ps.fk_object_info, p.geo_point 
 from pgwar.project_statements ps 
 	join information.place p on p.pk_entity = ps.fk_object_info
 	JOIN che.property_with_namespace prop ON ps.fk_property = prop.pk_property; 

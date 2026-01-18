@@ -8,8 +8,10 @@
 
 <urn:MAPID-1483135-entities> a rr:TriplesMap;
 
-
-  rr:SQLQuery """
+### this approach does not seem to work in Graph-DB
+# if you store this same query in a view, it works
+# FB, 23 June 2025
+  rr:sqlQuery """
       select pk_entity, class_uri, entity_label
         from rdf.v_ontop_entity_preview_corr
         where fk_project = 1483135

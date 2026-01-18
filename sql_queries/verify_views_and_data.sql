@@ -1,5 +1,10 @@
 
---manque le label pour le projet 1483135
+/*
+ * manque le label pour le projet 1483135, projet public
+ * mais du coup pourquoi l'entité est dans le projet public ?
+ * problème de Warehouse ?
+ */
+
 select *
 from pgwar.entity_preview ep 
 where ep.pk_entity = 6492226 --6558492 --1644967 --8377516;
@@ -21,7 +26,7 @@ where fk_entity = 6492226
 limit 10;
 
 select ep1.pk_entity, ep1.fk_class, 
-coalesce (ep1.entity_label , ep2.entity_label, 'no label') as entity_label,
+coalesce(ep1.entity_label , ep2.entity_label, 'no label') as entity_label,
 ep2.fk_class
 from pgwar.entity_preview  ep1, pgwar.entity_preview ep2
 where ep1.fk_project = 1483135
